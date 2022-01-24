@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'expense_app/base.html' %}
+<html lang="en">
+{% block head %}
+   <meta charset="UTF-8">
+   <title>Expense Home</title>
+{% endblock %}
+
+{% block content %}
+   <h1>Welcome! {{ name }}</h1>
+
+
+<a href="{% url 'submission' %}" style = "text-decoration: none"><button style = "display: block">Submit Expense</button></a>
+<a href="{% url 'backlog' %}" style = "text-decoration: none"><button style = "display: block">Backlog</button></a>
+<a href="{% url 'history' %}" style = "text-decoration: none"><button style = "display: block; text-decoration: none">History</button></a>
+
+ 
+{% endblock %}
+</body>
+</html>
