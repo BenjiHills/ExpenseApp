@@ -44,11 +44,11 @@ class Expense(models.Model):
     VAT_amount = models.FloatField(validators=[MinValueValidator(0.0)], default=0)
     employee = models.ForeignKey(User, on_delete=models.CASCADE, default = id(User))
     catagory = models.CharField(max_length = 2, choices= Claim_Type, default = "OT")
-    persons_seen = models.TextField(max_length = 200, blank=False, default = "Provide the name(s) of the person you saw.")
+    persons_seen = models.CharField(max_length = 50, blank=False, default = "Provide the name(s) of the person you saw.")
     information = models.TextField(max_length = 500, default = "Explaination of expense, including names for entertaining expenses and postcodes for mileage claims.")
     status = models.CharField(max_length = 2, choices= Status_Type, default = "PE")
     manager_comment = models.TextField(max_length = 500, null= True)
-    expense_date = models.TextField(max_length = 6, blank=False, default="Provide date as DD/MM/YY or date range as DD/MM/YY-DD/MM/YY.")
+    expense_date = models.CharField(max_length = 25, blank=False, default = 'Provide date DD/MM/YY or date range DD/MM/YY-DD/MM/YY')
     currency = models.CharField(max_length = 2, choices = Currency_Type, default = "GB")
 
     class Meta:
