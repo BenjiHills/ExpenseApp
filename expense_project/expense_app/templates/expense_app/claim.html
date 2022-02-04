@@ -10,7 +10,7 @@
 <h2>Expense #{{expense.id}}</h2>
 <table id="expense">
   <tr>
-    <th>Time:</th>
+    <th>Created at:</th>
     <td>{{expense.time}}</td>
   </tr>  
   <tr>
@@ -59,7 +59,8 @@
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" />
+    <input type="submit" value="Approve" name="Approve">
+    <input type="submit" value="Reject" name="Reject">
   </form>
 </form>
 <a href="{% url 'review' %}"><button>Back</button></a>

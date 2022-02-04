@@ -1,3 +1,4 @@
+from django.forms import DurationField
 from django.shortcuts import render, HttpResponseRedirect
 from .models import Expense
 from django.views.generic import ListView, DetailView
@@ -46,6 +47,10 @@ class CreateExpense(LoginRequiredMixin, CreateView):
 
   def form_valid(self, form):
     form.instance.employee = self.request.user
+    if self.request.method=='POST' and 'Draft' in self.request.POST:
+      form.instance.status = "DR"
+    elif self.request.method=='POST' and 'Submit' in self.request.POST:
+      form.instance.status = "PE"                
     return super().form_valid(form)
 
 class ExpenseHistory(LoginRequiredMixin, ListView):
@@ -64,4 +69,12 @@ class ManagerView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
   template_name = "expense_app/claim.html"
   form_class = ApprovalForm 
   success_url = "/review"
+
+  
+  def form_valid(self, form):
+    if self.request.method=='POST' and 'Approve' in self.request.POST:
+      form.instance.status = "AP"
+    elif self.request.method=='POST' and 'Reject' in self.request.POST:
+      form.instance.status = "RE"                
+    return super().form_valid(form)
 

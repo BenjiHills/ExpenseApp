@@ -17,5 +17,5 @@ class ExpenseCreateForm(forms.ModelForm):
 class ApprovalForm(forms.ModelForm):
   class Meta:
     model = Expense
-    fields = ("status", "manager_comment")
+    fields = ("manager_comment",)
     
