@@ -68,11 +68,11 @@
   <body>
     <div class="topnav" id="pageTopNav">
         <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'submission' %}">Submit Expense</a>
+        <a href="{% url 'submission' %}">Submit expense</a>
         {% if request.user|has_group:"Manager" or  request.user.is_superuser %}
-        <a href="{% url 'review' %}">Review Expenses</a>
+        <a href="{% url 'review' %}">Review expenses</a>
         {% endif %}
-        <a href="{% url 'history' %}">My Expense History</a>
+        <a href="{% url 'history' %}">Your expenses</a>
         <a href="{% url 'logout' %}"><button style="float: right;">Log Out</button></a>
       </div>
     {% block content %}

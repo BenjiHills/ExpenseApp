@@ -18,12 +18,28 @@
     <td>{{expense.employee}}</td>
   </tr>  
   <tr>
+    <th>Expense date:</th>
+    <td>{{expense.expense_date}}</td>
+  </tr>   
+  <tr>
     <th>Amount:</th>
     <td>{{expense.expense_amount}}</td>
   </tr>   
   <tr>
+    <th>VAT amount:</th>
+    <td>{{expense.VAT_amount}}</td>
+  </tr>   
+  <tr>
+    <th>Currency:</th>
+    <td>{{expense.get_currency_display}}</td>
+  </tr>    
+  <tr>
     <th>Catagory:</th>
     <td>{{expense.get_catagory_display}}</td>
+  </tr> 
+  <tr>
+    <th>Person(s) seen:</th>
+    <td>{{expense.persons_seen}}</td>
   </tr> 
   <tr>
     <th>Information:</th>
