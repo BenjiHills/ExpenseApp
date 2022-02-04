@@ -18,7 +18,7 @@ class Expense(models.Model):
     Mileage = "MI"
     Staff_entertainment = "SE"
     Client_entertainment = "CE"
-    Other = "OT"
+    Other = "OH"
     Flights = "FL"
     Other_travel = "OT"
     #currencies
@@ -43,12 +43,12 @@ class Expense(models.Model):
     expense_amount = models.FloatField(validators=[MinValueValidator(0.0)], default=0)
     VAT_amount = models.FloatField(validators=[MinValueValidator(0.0)], default=0)
     employee = models.ForeignKey(User, on_delete=models.CASCADE, default = id(User))
-    catagory = models.CharField(max_length = 2, choices= Claim_Type, default = "OT")
-    persons_seen = models.CharField(max_length = 50, blank=False, default = "Provide the name(s) of the person you saw.")
-    information = models.TextField(max_length = 500, default = "Explaination of expense, including names for entertaining expenses and postcodes for mileage claims.")
+    catagory = models.CharField(max_length = 2, choices= Claim_Type, default = "OH")
+    persons_seen = models.CharField(max_length = 50, blank=False)
+    information = models.TextField(max_length = 500)
     status = models.CharField(max_length = 2, choices= Status_Type, default = "PE")
     manager_comment = models.TextField(max_length = 500, null= True)
-    expense_date = models.CharField(max_length = 25, blank=False, default = 'Provide date DD/MM/YY or date range DD/MM/YY-DD/MM/YY')
+    expense_date = models.DateField()
     currency = models.CharField(max_length = 2, choices = Currency_Type, default = "GB")
 
     class Meta:
