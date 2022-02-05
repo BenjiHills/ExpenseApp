@@ -13,6 +13,7 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit">
-  </form>
+    <input type="submit" value="Draft" name="Draft">
+    <input type="submit" value="Submit" name="Submit">
+</form>
 {% endblock %}
