@@ -78,3 +78,7 @@ class ManagerView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
       form.instance.status = "RE"                
     return super().form_valid(form)
 
+class DraftsViews(ListView):
+  model = Expense
+  template_name = "expense_app/drafts.html"
+  
