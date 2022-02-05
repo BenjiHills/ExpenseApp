@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'expense_app/base.html' %}
+
+{% block head %}
+<meta charset="UTF-8">
+<title>Expense Drafts</title>
+{% endblock %}
+
+{% block content %}
+<h1>Draft History</h1>
+<table id = "expense">
+    <tr>
+        <th>
+            Expense Id
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            Catagory
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    <tr>
+        {% for expense in object_list %}
+        {% if expense.status == "DR" %}
+    </tr>
+    <tr>
+        <td>
+            {{expense.id}}
+        </td>
+        <td>
+            {{expense.time}}
+        </td>
+        <td>
+            {{expense.get_catagory_display}}
+        </td>
+        <td><a href="{% url 'claim' expense.id %}"><button>View</button></a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}
