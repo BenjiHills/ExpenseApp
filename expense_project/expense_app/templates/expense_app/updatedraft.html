@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'expense_app/base.html' %}
+
+{% block head %}
+<meta charset="UTF-8">
+<title>Update Draft</title>
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save Draft" name="Save Draft">
+    <input type="submit" value="Submit" name="Submit">
+  </form>
+</form>
+<a href="{% url 'drafts' %}"><button>Back</button></a>
+{% endblock %}
