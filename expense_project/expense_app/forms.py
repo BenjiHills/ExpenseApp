@@ -7,7 +7,7 @@ class DateInput(forms.DateInput):
 class ExpenseCreateForm(forms.ModelForm):
   class Meta:
     model = Expense
-    fields = ("expense_date", "expense_amount", "VAT_amount", "currency", "catagory", "persons_seen", "information")
+    fields = ("expense_date", "expense_amount", "VAT_amount", "currency", "catagory", "persons_seen", "information", "document")
     widgets = {
             'expense_date': DateInput(),
             'persons_seen': forms.TextInput(attrs={'placeholder': "Provide the name(s) of the person you saw."}),

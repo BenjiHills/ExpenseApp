@@ -14,5 +14,4 @@ urlpatterns = [
   path("claim/<pk>", views.ManagerView.as_view(), name = "claim"),
   path("signup/", views.SignUp.as_view(), name="signup"),
   path("drafts/", views.DraftsViews.as_view(), name = "drafts")
-
 ]

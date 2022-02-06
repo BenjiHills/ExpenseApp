@@ -50,8 +50,13 @@
     <td>{{expense.get_status_display}}</td>
   </tr> 
   <tr>
+    <th>File Upload:</th>
+    <td><a href="{{expense.document.url}}" download> download file</a></td>
+  </tr> 
+  <tr>
     <th>Comment:</th>
-    <td>{{expense.manager_comment}}</td>
+    <td>{{expense.manager_comment}} 
+      </td>
   </tr>                             
 </table>
 <a href="{% url 'history' %}"><button>Back</button></a>
