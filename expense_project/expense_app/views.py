@@ -4,12 +4,13 @@ from .models import Expense
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.http import Http404
-from .forms import ExpenseCreateForm, ApprovalForm
+from .forms import ExpenseCreateForm, ApprovalForm, DraftForm
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth import logout
+
 
 class SignUp(CreateView):
   template_name = "registration/signup.html"
@@ -82,3 +83,15 @@ class DraftsViews(ListView):
   model = Expense
   template_name = "expense_app/drafts.html"
   
+class UpdateDraft(UpdateView):
+  model = Expense
+  template_name = "expense_app/updatedraft.html"
+  form_class = DraftForm
+  success_url = "/drafts"
+
+  def form_valid(self, form):
+    if self.request.method=='POST' and 'Save Draft' in self.request.POST:
+      form.instance.status = "DR"
+    elif self.request.method=='POST' and 'Submit' in self.request.POST:
+      form.instance.status = "PE"                
+    return super().form_valid(form)
