@@ -37,7 +37,7 @@
         <td>
             {{expense.get_catagory_display}}
         </td>
-        <td><a href="{% url 'claim' expense.id %}"><button>View</button></a></td>
+        <td><a href="{% url 'updatedraft' expense.id %}"><button>View</button></a></td>
     </tr>
     {% endif %}
     {% endfor %}

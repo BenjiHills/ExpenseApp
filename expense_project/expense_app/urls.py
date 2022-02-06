@@ -13,6 +13,6 @@ urlpatterns = [
   path("expense/<pk>", views.ExpenseView.as_view(), name = "expenseview"),
   path("claim/<pk>", views.ManagerView.as_view(), name = "claim"),
   path("signup/", views.SignUp.as_view(), name="signup"),
-  path("drafts/", views.DraftsViews.as_view(), name = "drafts")
-
+  path("drafts/", views.DraftsViews.as_view(), name = "drafts"),
+  path("updatedraft/<pk>", views.UpdateDraft.as_view(), name = "updatedraft")
 ]
