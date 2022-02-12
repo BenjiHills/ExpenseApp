@@ -39,7 +39,7 @@ class ExpenseReview(LoginRequiredMixin, PermissionRequiredMixin, ListView):
   paginate_by = 3
 
   def get_queryset(self):
-    return Expense.objects.filter(status = "PE")
+    return Expense.objects.filter(status = "PE", manager = self.request.user)
 
 
 class CreateExpense(LoginRequiredMixin, CreateView):
