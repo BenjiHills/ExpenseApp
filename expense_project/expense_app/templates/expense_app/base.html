@@ -73,7 +73,10 @@
         <a href="{% url 'review' %}">Review expenses</a>
         {% endif %}
         <a href="{% url 'history' %}">Your expenses</a>
-        <a href="{% url 'drafts' %}">Draft History</a>
+        <a href="{% url 'drafts' %}">Draft history</a>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'accepted' %}">Approved expenses</a>
+        {% endif %}
         <a href="{% url 'logout' %}"><button style="float: right;">Log Out</button></a>
       </div>
     {% block content %}

@@ -36,7 +36,7 @@ class ExpenseReview(LoginRequiredMixin, PermissionRequiredMixin, ListView):
   raise_exception = True
   model = Expense
   template_name = "expense_app/review.html"
-  paginate_by = 3
+  paginate_by = 10
 
   def get_queryset(self):
     return Expense.objects.filter(status = "PE", manager = self.request.user)
@@ -60,7 +60,7 @@ class CreateExpense(LoginRequiredMixin, CreateView):
 class ExpenseHistory(LoginRequiredMixin, ListView):
   model = Expense
   template_name = "expense_app/history.html"
-  paginate_by = 3
+  paginate_by = 10
 
   def get_queryset(self):
     return Expense.objects.filter(employee = self.request.user).order_by('-time')
@@ -88,7 +88,7 @@ class ManagerView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class DraftsViews(LoginRequiredMixin, ListView):
   model = Expense
   template_name = "expense_app/drafts.html"
-  paginate_by = 3
+  paginate_by = 10
 
   def get_queryset(self):
     return Expense.objects.filter(status = "DR", employee = self.request.user)
@@ -98,6 +98,16 @@ class UpdateDraft(LoginRequiredMixin, UpdateView):
   template_name = "expense_app/updatedraft.html"
   form_class = DraftForm
   success_url = "/drafts"
+
+class AdminView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+  permission_required = "expense_app.delete_expense"
+  raise_exception = True
+  model = Expense
+  template_name = "expense_app/accepted.html"
+  paginate_by = 10
+
+  def get_queryset(self):
+    return Expense.objects.filter(status = "AP").order_by("-time")
 
   def form_valid(self, form):
     if self.request.method=='POST' and 'Save Draft' in self.request.POST:

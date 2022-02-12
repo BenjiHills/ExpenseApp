@@ -50,7 +50,7 @@ class Expense(models.Model):
     manager_comment = models.TextField(max_length = 500, blank= True)
     expense_date = models.DateField()
     currency = models.CharField(max_length = 2, choices = Currency_Type, default = "GB")
-    document = models.FileField(upload_to='media', blank= True)
+    document = models.FileField(upload_to='media')
 
     class Meta:
         ordering = ["time"]
