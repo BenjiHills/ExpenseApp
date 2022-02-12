@@ -17,7 +17,9 @@
 {% endif %}
 <a href="{% url 'history' %}" style = "text-decoration: none"><button style = "display: block">My Expense History</button></a>
 <a href="{% url 'drafts' %}" style= "text-decoration: none"><button style = "display: block">Draft History</button></a>
- 
+{% if request.user.is_superuser %}
+<a href="{% url 'accepted' %}" style= "text-decoration: none"><button style = "display: block">Approved Expenses</button></a>
+{% endif %}
 {% endblock %}
 </body>
 </html>

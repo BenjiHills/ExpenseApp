@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'expense_app/base.html' %}
+
+{% block head %}
+<meta charset="UTF-8">
+<title>Aprroved Expenses</title>
+{% endblock %}
+
+{% block content %}
+<h2>Approved Expenses</h2>
+<table id="expense">
+  <tr>
+    <th>Created at:</th>
+    <th>Employee</th>
+    <th>Catagory</th>
+      <th> </th>
+  </tr>
+	<tr>
+  {% for expense in object_list %}
+  </tr>
+    <tr>
+        <td>{{ expense.time}}</td>
+        <td>{{ expense.employee }}</td>
+        <td>{{ expense.get_catagory_display }}</td>
+        <td><a href="{% url 'expenseview' expense.id %}"><button>View</button></a></td>
+        
+        
+    </tr>
+  {% endfor %}
+</table>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+{% endblock %}
