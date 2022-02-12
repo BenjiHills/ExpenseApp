@@ -38,8 +38,7 @@ class Expense(models.Model):
     Currency_Type = [(Euro, "Euro"), (GBP, "Pound Sterling"), (USD, "US Dollar"), (SGD, "Singaporean Dollar"), (AUD, "Australian Dollar"), (CHF, "Swiss Franc"), (HKD, "Hong Kong Dollar")]
 
     # Define each table column and their rules
-    time = models.DateTimeField(auto_now = True)
-
+    time = models.DateTimeField(auto_now = True, editable= False)
     expense_amount = models.FloatField(validators=[MinValueValidator(0.0)], default=0)
     VAT_amount = models.FloatField(validators=[MinValueValidator(0.0)], default=0)
     employee = models.ForeignKey(User, on_delete=models.CASCADE, default = id(User))
@@ -47,10 +46,11 @@ class Expense(models.Model):
     persons_seen = models.CharField(max_length = 50, blank=False)
     information = models.TextField(max_length = 500)
     status = models.CharField(max_length = 2, choices= Status_Type, default = "PE")
-    manager_comment = models.TextField(max_length = 500, null= True)
+    manager = models.ForeignKey(User, on_delete=models.PROTECT, limit_choices_to={'groups__name': "Manager"}, related_name='manager', default = id(User))
+    manager_comment = models.TextField(max_length = 500, blank= True)
     expense_date = models.DateField()
     currency = models.CharField(max_length = 2, choices = Currency_Type, default = "GB")
-    document = models.FileField(upload_to='media')
+    document = models.FileField(upload_to='media', blank= True)
 
     class Meta:
         ordering = ["time"]

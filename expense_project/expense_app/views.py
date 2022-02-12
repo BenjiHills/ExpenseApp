@@ -36,7 +36,10 @@ class ExpenseReview(LoginRequiredMixin, PermissionRequiredMixin, ListView):
   raise_exception = True
   model = Expense
   template_name = "expense_app/review.html"
+  paginate_by = 3
 
+  def get_queryset(self):
+    return Expense.objects.filter(status = "PE", manager = self.request.user)
 
 
 class CreateExpense(LoginRequiredMixin, CreateView):
@@ -56,8 +59,11 @@ class CreateExpense(LoginRequiredMixin, CreateView):
 
 class ExpenseHistory(LoginRequiredMixin, ListView):
   model = Expense
-  queryset = Expense.objects.order_by('-time')
   template_name = "expense_app/history.html"
+  paginate_by = 3
+
+  def get_queryset(self):
+    return Expense.objects.filter(employee = self.request.user).order_by('-time')
  
 
 class ExpenseView(LoginRequiredMixin, DetailView):
@@ -79,11 +85,15 @@ class ManagerView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
       form.instance.status = "RE"                
     return super().form_valid(form)
 
-class DraftsViews(ListView):
+class DraftsViews(LoginRequiredMixin, ListView):
   model = Expense
   template_name = "expense_app/drafts.html"
+  paginate_by = 3
+
+  def get_queryset(self):
+    return Expense.objects.filter(status = "DR", employee = self.request.user)
   
-class UpdateDraft(UpdateView):
+class UpdateDraft(LoginRequiredMixin, UpdateView):
   model = Expense
   template_name = "expense_app/updatedraft.html"
   form_class = DraftForm
