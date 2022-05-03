@@ -1,41 +1,136 @@
 <!DOCTYPE html>
+{% load static %}
 <style>
     body {
-        font-family: Arial, Helvetica, sans-serif;
-
+        font-family: verdana;
     }
     button, input[type=submit] {
-        background-color: #140332;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+      width:150px;
+      margin-left: 400px;
+      display: block;
+      padding: 10px;
+      border-radius: 20px;
+      margin-top: 5%;
+      margin-bottom: 1%;
+      font-size: 20px ;
+      background-color: #140332;
+      color: white;
+      box-shadow: 0px 20px 40px -20px  black;
+
     }
     
     
     input[type=submit]:hover {
-        background-color: #140332;
+        background-color: #240e4b;
+
     }
     
     div {
         border-radius: 5px;
-        background-color: #f2f2f2;
+        background-color: #e4dede93;
         padding: 20px;
+        text-align: center;
+        width: 30%;
+        margin: auto;
+        border: solid 1px #140332;
+        z-index: 1; 
+        box-shadow: 0px 20px 40px -20px  black;
+        position: relative;
     }
+    #logo {
+    width:600px;
+    height: 100px;
+    margin: auto;
+    z-index: 6;
     
+    
+}
+  h2{
+    width:200px;
+    background: #140332;
+    margin-left: 20px;
+    text-align: left;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    font-size: 25px;
+    border-radius: 4px;
+    box-shadow: 0px 20px 40px -20px  black;
+    }
+
+
+input[type=text],input[type=password], select {
+    width: 50%;
+    padding: 12px 15px;
+    margin: auto;
+    display: inline-block;
+    border: 1px solid rgba(204, 204, 204, 0.842);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(243, 243, 243);
+    text-align: left;
+    font-size: 15px;
+      }
+
+label{
+    width:200px;
+    margin: auto;
+    margin-right: 12px;
+    margin-top: 10px;
+    text-align: center;
+    color: #140332;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    display: inline-block;   
+}
+.left {
+    float: left;
+    margin-top: -470px;
+    z-index: -1;
+    height: 840px;
+    position: relative;
+    
+}
+
+.right {
+    float: right;
+    margin-top: -110px;
+    position: relative;
+}
+#header{
+    
+        background-color: #2cd279ff;
+        padding: 2px;
+        text-align: center;
+        margin-top: -10px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        width: 100%;
+        border: none;
+        box-shadow: 0px 40px 40px -20px #3C7B61;
+}
+
+
     </style>
 
-</head>
-<h1>Expense App</h1>
-    <h2>Please login</h2>
-
+<body>
+<div id ="header">
+<img id="logo" src = '/static/images/expense_logo.svg'> 
+</div>
+ 
+<div style = "margin-top: 70px;">
+<h2>Log-in</h2>
 <form class="login" method="post">
-    <div>
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Login"/>
-    </div>
-</form> 
- <a href="{% url 'signup' %}"><button>Create An Account</button></a>
+</div>
+</form>
+<img class="left" src = '/static/images/walking_man.svg'> 
+<img class="right" src = '/static/images/desk_woman.svg'> 
+
+</body>
+

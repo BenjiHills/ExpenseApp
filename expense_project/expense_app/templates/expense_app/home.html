@@ -9,27 +9,25 @@
 
 {% block content %}
 
-<head>
-   <style>
- h1 {
-   color: blue;
-   font-family: verdana;
- }
-   </style>
- </head>
- 
-   <h1>Welcome! {{ name }}</h1>
 
 
-<a href="{% url 'submission' %}" style = "text-decoration: none"><button style = "display: block">Submit Expense</button></a>
+
+
+<div id = "welcome_banner">
+<h1 id = "welcome">Welcome!</h1><h1 id="strong">{{ name }}</h1>
+</div>
+<div>
+<div id ="menu">
+<a href="{% url 'submission' %}"><button id="custom_button">Submit Expense</button></a>
 {% if request.user|has_group:"Manager" or  request.user.is_superuser %}
-<a href="{% url 'review' %}" style = "text-decoration: none"><button style = "display: block">Review Expenses</button></a>
+<a href="{% url 'review' %}"><button id="custom_button">Review Expenses</button></a>
 {% endif %}
-<a href="{% url 'history' %}" style = "text-decoration: none"><button style = "display: block">My Expense History</button></a>
-<a href="{% url 'drafts' %}" style= "text-decoration: none"><button style = "display: block">Draft History</button></a>
+<a href="{% url 'history' %}"><button id="custom_button">Your Expenses</button></a>
+<a href="{% url 'drafts' %}"><button id="custom_button">Draft History</button></a>
 {% if request.user.is_superuser %}
-<a href="{% url 'accepted' %}" style= "text-decoration: none"><button style = "display: block">Approved Expenses</button></a>
+<a href="{% url 'accepted' %}"><button id="custom_button">Approved Expenses</button></a>
 {% endif %}
+</div>
+</div>
 {% endblock %}
-</body>
 </html>

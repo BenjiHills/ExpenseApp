@@ -3,17 +3,19 @@
 
 {% block head %}
 <meta charset="UTF-8">
-<title>Expense Backlog</title>
+<title>Pending Expense</title>
 {% endblock %}
 
 {% block content %}
-<h2>Pending Claims</h2>
+<h2>Pending Expenses</h2>
 <table id="expense">
   <tr>
-    <th>Created at:</th>
+    <th>Created At</th>
     <th>Employee</th>
-    <th>Catagory</th>
-      <th> </th>
+    <th>Expense Date</th>
+    <th>Person Seen</th>
+    <th>Total Amount </th>
+    <th>Action</th>
   </tr>
 	<tr>
   {% for expense in object_list %}
@@ -21,7 +23,9 @@
     <tr>
         <td>{{ expense.time}}</td>
         <td>{{ expense.employee }}</td>
-        <td>{{ expense.get_catagory_display }}</td>
+        <td>{{expense.expense_date}}</td>
+        <td>{{expense.persons_seen}}</td>
+        <td>{{expense.VAT_amount}} {{expense.get_currency_display}}</td>
         <td><a href="{% url 'claim' expense.id %}"><button>View</button></a></td>
         
         

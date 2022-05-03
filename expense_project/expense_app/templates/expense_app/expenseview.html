@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'history' %}"><button>Back</button></a>
 <h2>Expense #{{expense.id}}</h2>
 <table id="expense">
   <tr>
@@ -59,5 +60,5 @@
       </td>
   </tr>                             
 </table>
-<a href="{% url 'history' %}"><button>Back</button></a>
+
 {% endblock %}
