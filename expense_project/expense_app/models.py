@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Expense(models.Model):
 
-    # reduces stored data in table to two letters these might be changed to their own tables later
+    # reduces stored data in table to two letters 
     #status
     Approved = "AP"
     Rejected = "RE"
@@ -50,7 +50,7 @@ class Expense(models.Model):
     manager_comment = models.TextField(max_length = 500, blank= True)
     expense_date = models.DateField()
     currency = models.CharField(max_length = 2, choices = Currency_Type, default = "GB")
-    document = models.FileField(upload_to='media')
+    document = models.FileField(upload_to='media', blank= True)
 
     class Meta:
         ordering = ["time"]

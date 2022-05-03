@@ -6,22 +6,26 @@
 <title>Expense History</title>
 {% endblock %}
 {% block content %}
-<h2>My Expense History</h2>
+<h2>Your Expenses</h2>
 <table id="expense">
   <tr>
-    <th>Created at</th>
-    <th>Expense #</th>
-    <th>Catagory</th>
+    <th>Created At</th>
+    <th>Expense ID</th>
+    <th>Expense Date</th>
+    <th>Person Seen</th>
+    <th>Total Amount </th>
     <th>Status</th>
-      <th> </th>
+    <th>Action</th>
   </tr>
 	<tr>
   {% for expense in object_list %}
   </tr>
     <tr>
-        <td>{{ expense.time}}</td>
-        <td>{{ expense.id}}</td>
-        <td>{{ expense.get_catagory_display }}</td>
+        <td>{{expense.time}}</td>
+        <td>{{expense.id}}</td>
+        <td>{{expense.expense_date}}</td>
+        <td>{{expense.persons_seen}}</td>
+        <td>{{expense.VAT_amount}} {{expense.get_currency_display}}</td>
         <td>{{expense.get_status_display}}</td>
         <td><a href="{% url 'expenseview' expense.id %}"><button>View</button></a></td>
         

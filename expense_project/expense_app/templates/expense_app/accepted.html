@@ -10,18 +10,22 @@
 <h2>Approved Expenses</h2>
 <table id="expense">
   <tr>
-    <th>Created at:</th>
+    <th>Created At</th>
+    <th>Manager</th>
     <th>Employee</th>
-    <th>Catagory</th>
-      <th> </th>
+    <th>Expense Date</th>
+    <th>Total Amount </th>
+    <th>Action</th>
   </tr>
 	<tr>
   {% for expense in object_list %}
   </tr>
     <tr>
         <td>{{ expense.time}}</td>
+        <td>{{expense.manager}}</td>
         <td>{{ expense.employee }}</td>
-        <td>{{ expense.get_catagory_display }}</td>
+        <td>{{expense.expense_date}}</td>
+        <td>{{expense.VAT_amount}} {{expense.get_currency_display}}</td>
         <td><a href="{% url 'expenseview' expense.id %}"><button>View</button></a></td>
         
         

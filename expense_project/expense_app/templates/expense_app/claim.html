@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'review' %}"><button style=" float: left">Back</button></a>
 <h2>Expense #{{expense.id}}</h2>
 <table id="expense">
   <tr>
@@ -62,10 +63,16 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Approve" name="Approve">
+    <table>
+    {{ form.as_table }}
+    <td>
     <input type="submit" value="Reject" name="Reject">
+    </td>
+    <td>
+    <input type="submit" value="Approve" name="Approve">
+    </td>
+     </table>
   </form>
 </form>
-<a href="{% url 'review' %}"><button>Back</button></a>
+
 {% endblock %}

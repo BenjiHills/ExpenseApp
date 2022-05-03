@@ -7,13 +7,21 @@
 {% endblock %}
 
 {% block content %}
-<h1>Submit A Claim Here:</h1>
+<h2>Submit A Claim Here:</h2>
 
 <form action="" method="POST" enctype="multipart/form-data">
+<table>
     {% csrf_token %}
-    {{ <form action="" class="as_table"></form>}}
-
+    {{ form.as_table }}
+    <td>
     <input type="submit" value="Draft" name="Draft">
+    </td>
+    <td>
     <input type="submit" value="Submit" name="Submit">
+    </td>
+
+</table>
+   
+
 </form>
 {% endblock %}

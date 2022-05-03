@@ -7,12 +7,19 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'drafts' %}"><button>Back</button></a>
 <form action="" method="POST" enctype="multipart/form-data">
+<table>
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_table }}
+    <td>
     <input type="submit" value="Save Draft" name="Save Draft">
+    </td>
+    <td>
     <input type="submit" value="Submit" name="Submit">
+    </td>
+</table>    
   </form>
 </form>
-<a href="{% url 'drafts' %}"><button>Back</button></a>
+
 {% endblock %}
