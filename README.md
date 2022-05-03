@@ -21,7 +21,7 @@ Run server through command lines:
 
 ## Credits
 
-[Ben](https://github.com/BenjiHills): Lead Backend, Lead Database, and Frontend Programmer.
-[Stephanie](https://github.com/sb446): Project Manager, UX Design, Backend Programmer
-[Briony](https://github.com/brional): Frontend Design, Client Intraction, Frontend and Backend Programmer
-[Urooj](https://github.com/urj09): Frontend Design, Frontend and Backend Programmer.
+-[Ben](https://github.com/BenjiHills): Lead Backend, Lead Database, and Frontend Programmer.
+-[Stephanie](https://github.com/sb446): Project Manager, UX Design, Backend Programmer
+-[Briony](https://github.com/brional): Frontend Design, Client Intraction, Frontend and Backend Programmer
+-[Urooj](https://github.com/urj09): Frontend Design, Frontend and Backend Programmer.
